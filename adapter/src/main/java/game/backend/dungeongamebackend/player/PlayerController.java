@@ -17,8 +17,9 @@ class PlayerController {
     }
 
     @PostMapping
-    void create(@RequestBody PlayerCreateDto playerCreateDto){
+    boolean create(@RequestBody PlayerCreateDto playerCreateDto){
         playerFacade.create(playerCreateDto);
+        return true;
     }
 
     @PostMapping("/login")

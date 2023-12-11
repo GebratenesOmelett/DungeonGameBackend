@@ -4,16 +4,16 @@ public class PlayerLoginDto {
     private final String email;
     private final String password;
 
-    PlayerLoginDto(String email, String password) {
+    public PlayerLoginDto(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    String getPassword() {
+    public String getPassword() {
         return password;
     }
 
