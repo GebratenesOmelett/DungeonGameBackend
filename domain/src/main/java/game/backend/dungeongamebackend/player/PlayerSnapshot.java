@@ -1,10 +1,16 @@
 package game.backend.dungeongamebackend.player;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 @Entity
 @Table(name = "player")
-class PlayerSnapshot {
+@Getter
+class PlayerSnapshot implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -22,20 +28,39 @@ class PlayerSnapshot {
         this.userName = builder.userName;
     }
 
-    int getId() {
-        return id;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
-    String getEmail() {
-        return email;
-    }
-
-    String getPassword() {
+    @Override
+    public String getPassword() {
         return password;
     }
 
-    String getUserName() {
-        return userName;
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
 

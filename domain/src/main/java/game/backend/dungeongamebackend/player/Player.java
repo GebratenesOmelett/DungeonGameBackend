@@ -5,7 +5,7 @@ class Player {
         return new Player(playerSnapshot.getId(),
                 playerSnapshot.getEmail(),
                 playerSnapshot.getPassword(),
-                playerSnapshot.getUserName());
+                playerSnapshot.getUsername());
     }
     private final int id;
     private final String email;
