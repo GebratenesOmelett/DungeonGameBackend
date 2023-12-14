@@ -1,5 +1,6 @@
 package game.backend.dungeongamebackend.player;
 
+import game.backend.dungeongamebackend.auth.dto.AuthenticationResponse;
 import game.backend.dungeongamebackend.player.dto.PlayerCreateDto;
 import game.backend.dungeongamebackend.player.dto.PlayerLoginDto;
 import org.springframework.http.HttpStatus;
@@ -17,13 +18,12 @@ class PlayerController {
     }
 
     @PostMapping
-    boolean create(@RequestBody PlayerCreateDto playerCreateDto){
-        playerFacade.create(playerCreateDto);
-        return true;
+    ResponseEntity<AuthenticationResponse> create(@RequestBody PlayerCreateDto playerCreateDto){
+        return new ResponseEntity<>(playerFacade.create(playerCreateDto), HttpStatus.OK);
     }
 
     @PostMapping("/login")
-    ResponseEntity<Boolean> login(@RequestBody PlayerLoginDto playerLoginDto){
+    ResponseEntity<AuthenticationResponse> login(@RequestBody PlayerLoginDto playerLoginDto){
         return new ResponseEntity<>(playerFacade.login(playerLoginDto), HttpStatus.OK);
     }
 
