@@ -1,22 +1,31 @@
 package game.backend.dungeongamebackend.monster;
 
 import game.backend.dungeongamebackend.monster.dto.MonsterCreateDto;
+import game.backend.dungeongamebackend.monster.dto.MonsterDto;
 import org.springframework.stereotype.Service;
 @Service
 public class MonsterFacade {
-    MonsterRepository monsterRepository;
-    MonsterFactory monsterFactory;
+    private final MonsterRepository monsterRepository;
+    private final MonsterFactory monsterFactory;
+    private final MonsterQueryRepository monsterQueryRepository;
+    private final int MIN_ID = 1;
 
-    MonsterFacade(MonsterRepository monsterRepository, MonsterFactory monsterFactory) {
+    MonsterFacade(MonsterRepository monsterRepository, MonsterFactory monsterFactory, MonsterQueryRepository monsterQueryRepository) {
         this.monsterRepository = monsterRepository;
         this.monsterFactory = monsterFactory;
+        this.monsterQueryRepository = monsterQueryRepository;
     }
 
-    public boolean getMonster(){
-        return true;
+    public MonsterDto getMonster(){
+        long max_id = monsterQueryRepository.countAllMonsters();
+        int monsterId = (int)Math.floor(Math.random() * (max_id - MIN_ID + 1) + MIN_ID);
+        return monsterRepository.findMonsterSnapshotById(monsterId);
     }
     public void create(MonsterCreateDto monsterCreateDto){
         monsterRepository.save(monsterFactory.from(monsterCreateDto));
+    }
+    public long getCountOfMonster(){
+        return monsterQueryRepository.countAllMonsters();
     }
 
 }

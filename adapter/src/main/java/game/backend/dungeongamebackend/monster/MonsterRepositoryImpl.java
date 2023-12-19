@@ -8,6 +8,7 @@ import java.util.Optional;
 interface SqlMonsterRepository extends JpaRepository<MonsterSnapshot, Integer> {
     Optional<MonsterSnapshot> findMonsterSnapshotById(int id);
     MonsterSnapshot save(MonsterSnapshot monsterSnapshot);
+
 }
 @Repository
 class MonsterRepositoryImpl implements MonsterQueryRepository, MonsterRepository{
@@ -19,6 +20,11 @@ class MonsterRepositoryImpl implements MonsterQueryRepository, MonsterRepository
     @Override
     public Optional<MonsterSnapshot> findMonsterSnapshotByName(String email) {
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<MonsterSnapshot> findMonsterSnapshotById(int id) {
+        return sqlMonsterRepository.findMonsterSnapshotById(id);
     }
 
     @Override

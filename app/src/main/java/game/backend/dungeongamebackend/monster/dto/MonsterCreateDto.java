@@ -15,4 +15,10 @@ public class MonsterCreateDto {
     public int getAttackPower() {
         return attackPower;
     }
+
+    public MonsterCreateDto(String name, int health, int attackPower) {
+        this.name = name;
+        this.health = health;
+        this.attackPower = attackPower;
+    }
 }
