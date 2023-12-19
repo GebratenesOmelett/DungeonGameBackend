@@ -15,11 +15,11 @@ class MonsterSnapshot {
     protected MonsterSnapshot() {
     }
 
-    MonsterSnapshot(int id, String name, int health, int attackPower) {
-        this.id = id;
-        this.name = name;
-        this.health = health;
-        this.attackPower = attackPower;
+    MonsterSnapshot(MonsterSnapshotBuilder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.health = builder.health;
+        this.attackPower = builder.attackPower;
     }
 
     int getId() {
@@ -36,5 +36,35 @@ class MonsterSnapshot {
 
     int getAttackPower() {
         return attackPower;
+    }
+
+    static class MonsterSnapshotBuilder{
+        private int id;
+        private String name;
+        private int health;
+        private int attackPower;
+        MonsterSnapshot.MonsterSnapshotBuilder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        MonsterSnapshot.MonsterSnapshotBuilder setHealth(int health) {
+            this.health = health;
+            return this;
+        }
+
+        MonsterSnapshot.MonsterSnapshotBuilder setAttackPower(int attackPower) {
+            this.attackPower = attackPower;
+            return this;
+        }
+
+        MonsterSnapshot.MonsterSnapshotBuilder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        MonsterSnapshot build(){
+            return new MonsterSnapshot(this);
+        }
     }
 }
