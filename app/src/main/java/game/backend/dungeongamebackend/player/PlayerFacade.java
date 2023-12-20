@@ -30,10 +30,10 @@ public class PlayerFacade {
         Player player = playerFactory.from(playerCreateDto);
         playerRepository.save(player);
         var jwtToken = jwtService.generateToken(player.getSnapshot());
-        return new AuthenticationResponse(jwtToken);
+        return new AuthenticationResponse(jwtToken, playerCreateDto.getUserName(), playerCreateDto.getEmail());
     }
 
-    AuthenticationResponse login(PlayerLoginDto playerLoginDto) {
+    public AuthenticationResponse login(PlayerLoginDto playerLoginDto) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         playerLoginDto.getEmail(),
@@ -43,6 +43,6 @@ public class PlayerFacade {
         PlayerSnapshot player = playerQueryRepository.findPlayerSnapshotByEmail(playerLoginDto.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(player);
-        return new AuthenticationResponse(jwtToken);
+        return new AuthenticationResponse(jwtToken, player.getUserName(), player.getEmail());
     }
 }

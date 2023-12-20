@@ -1,11 +1,14 @@
 package game.backend.dungeongamebackend.player;
 
+import lombok.ToString;
+
+@ToString
 class Player {
     static Player restore(PlayerSnapshot playerSnapshot){
         return new Player(playerSnapshot.getId(),
                 playerSnapshot.getEmail(),
                 playerSnapshot.getPassword(),
-                playerSnapshot.getUsername());
+                playerSnapshot.getUserName());
     }
     private final int id;
     private final String email;

@@ -22,4 +22,12 @@ public class PlayerCreateDto {
     public String getUserName() {
         return userName;
     }
+    @Override
+    public String toString() {
+        return "PlayerCreateDto{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 class MonsterFactory {
     Monster from(MonsterCreateDto monsterCreateDto) {
         return Monster.restore(new MonsterSnapshot.MonsterSnapshotBuilder()
-                .setName(monsterCreateDto.getName())
+                .setName(monsterCreateDto.getName().toUpperCase())
                 .setAttackPower(monsterCreateDto.getAttackPower())
                 .setHealth(monsterCreateDto.getHealth())
                 .build());

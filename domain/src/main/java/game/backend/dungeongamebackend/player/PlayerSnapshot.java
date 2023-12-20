@@ -2,6 +2,7 @@ package game.backend.dungeongamebackend.player;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,7 +10,6 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "player")
-@Getter
 class PlayerSnapshot implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,6 +63,17 @@ class PlayerSnapshot implements UserDetails {
         return true;
     }
 
+    int getId() {
+        return id;
+    }
+
+    String getEmail() {
+        return email;
+    }
+
+    String getUserName() {
+        return userName;
+    }
 
     static class PlayerSnapshotBuilder{
         private int id;
@@ -93,4 +104,6 @@ class PlayerSnapshot implements UserDetails {
             return new PlayerSnapshot(this);
         }
     }
+
+
 }

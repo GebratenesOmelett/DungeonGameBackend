@@ -16,7 +16,7 @@ class InitializeMonsters implements ApplicationListener<ContextRefreshedEvent> {
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        monsterFacade.create(new MonsterCreateDto("skieleton", 50 , 50));
-        monsterFacade.create(new MonsterCreateDto("slime", 50 , 50));
+        monsterFacade.create(new MonsterCreateDto("skeleton", 20 , 50));
+        monsterFacade.create(new MonsterCreateDto("slime", 100 , 10));
     }
 }

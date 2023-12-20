@@ -1,17 +1,25 @@
 package game.backend.dungeongamebackend.auth.dto;
 
 public class AuthenticationResponse {
-    private String token;
+    private final String token;
+    private final String userName;
+    private final String email;
 
-    public AuthenticationResponse(String token) {
+    public AuthenticationResponse(String token, String userName, String email) {
         this.token = token;
+        this.userName = userName;
+        this.email = email;
     }
 
     public String getToken() {
         return token;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

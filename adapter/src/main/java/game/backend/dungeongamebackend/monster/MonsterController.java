@@ -1,5 +1,6 @@
 package game.backend.dungeongamebackend.monster;
 
+import game.backend.dungeongamebackend.monster.dto.MonsterDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,15 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/monsters")
 class MonsterController {
     MonsterFacade monsterFacade;
-    MonsterQueryRepository monsterQueryRepository;
 
-    MonsterController(MonsterFacade monsterFacade, MonsterQueryRepository monsterQueryRepository) {
+    MonsterController(MonsterFacade monsterFacade) {
         this.monsterFacade = monsterFacade;
-        this.monsterQueryRepository = monsterQueryRepository;
     }
 
-    @GetMapping("/get")
-    ResponseEntity<Long> getMonster(){
-        return new ResponseEntity<>(monsterQueryRepository.countAllMonsters(), HttpStatus.OK);
+    @GetMapping("/getAmount")
+    ResponseEntity<Long> getAmountOfMonsters(){
+        return new ResponseEntity<>(monsterFacade.getCountOfMonster(), HttpStatus.OK);
+    }
+    @GetMapping("/getRandom")
+    ResponseEntity<MonsterDto> getRandomMonster(){
+        return new ResponseEntity<>(monsterFacade.getRandomMonster(), HttpStatus.OK);
     }
 }

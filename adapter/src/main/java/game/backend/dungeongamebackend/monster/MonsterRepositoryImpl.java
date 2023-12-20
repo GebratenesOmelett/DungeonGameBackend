@@ -18,13 +18,13 @@ class MonsterRepositoryImpl implements MonsterQueryRepository, MonsterRepository
     }
 
     @Override
-    public Optional<MonsterSnapshot> findMonsterSnapshotByName(String email) {
+    public Optional<Monster> findMonsterSnapshotByName(String email) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<MonsterSnapshot> findMonsterSnapshotById(int id) {
-        return sqlMonsterRepository.findMonsterSnapshotById(id);
+    public Optional<Monster> findMonsterSnapshotById(int id) {
+        return sqlMonsterRepository.findMonsterSnapshotById(id).map(Monster::restore);
     }
 
     @Override
