@@ -4,13 +4,13 @@ public class AuthenticationResponse {
     private final String token;
     private final String userName;
     private final String email;
-
-    public AuthenticationResponse(String token, String userName, String email) {
+    private final String expiresIn;
+    public AuthenticationResponse(String token, String userName, String email, String expiresIn) {
         this.token = token;
         this.userName = userName;
         this.email = email;
+        this.expiresIn = expiresIn;
     }
-
     public String getToken() {
         return token;
     }
@@ -21,5 +21,9 @@ public class AuthenticationResponse {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getExpiresIn() {
+        return expiresIn;
     }
 }

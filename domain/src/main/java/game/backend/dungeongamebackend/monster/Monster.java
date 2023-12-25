@@ -9,10 +9,10 @@ class Monster {
                 monsterSnapshot.getHealth(),
                 monsterSnapshot.getAttackPower());
     }
-    int id;
-    String name;
-    private int health;
-    private int attackPower;
+    private final int id;
+    private final String name;
+    private final int health;
+    private final int attackPower;
 
     Monster(int id, String name, int health, int attackPower) {
         this.id = id;

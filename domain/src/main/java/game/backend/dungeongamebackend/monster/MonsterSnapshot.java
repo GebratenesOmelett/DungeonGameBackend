@@ -3,7 +3,7 @@ package game.backend.dungeongamebackend.monster;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "monsters")
+@Table(name = "monster")
 class MonsterSnapshot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

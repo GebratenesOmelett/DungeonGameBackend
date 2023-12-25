@@ -2,9 +2,11 @@ package game.backend.dungeongamebackend.hero;
 
 import game.backend.dungeongamebackend.player.dto.SimplePlayerSnapshot;
 import jakarta.persistence.*;
+import lombok.Builder;
 
 @Entity
 @Table(name = "hero")
+@Builder
 class HeroSnapshot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

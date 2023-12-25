@@ -21,7 +21,7 @@ public class JwtService {
             "2t4OUxYVlFOaDliMmkrVWcybk0yYitKN0EyQUVMNFJtL0xQdHo5REZyM0EzWk9uK2l3dlJ6ZnJsRDY0WDJMUnByUXZ3dzh5aHhEVFRiMU8v" +
             "dVlwcWRUWjY3RVo3U2VoR2NpaSt2a2NUSDhMaGY5Y0hRZHp0eXh2TTVaT3k3cWJJU01QR21qTVJPZmlGcmZEWUFGRDU4elJFekovQ3NVNEV" +
             "VTWtrNTZjOWZoUUtLM0R3U1JXcjVzcXczdGcxRklkdExzWGRHL3p6eDRpUEp0aUhESktMb2VyRkhNV2lLVUFvenhJPQ==";
-
+    public static final int expiration = 1000 * 60 * 60 * 24;
     public String generateToken(Map<String, Object> extraClaims,
                                 UserDetails userDetails) {
         return Jwts
@@ -29,7 +29,7 @@ public class JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
