@@ -35,7 +35,7 @@ class Hero {
                 .defence(defence)
                 .attackPower(attackPower)
                 .userName(userName)
-                .player(player.)
+                .player(player.getSnapshot())
                 .build();
 
 
