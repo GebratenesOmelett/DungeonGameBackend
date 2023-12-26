@@ -16,7 +16,7 @@ class Hero {
     private int hp;
     private int defence;
     private int attackPower;
-    private String userName;;
+    private String userName;
     private SimplePlayer player;
 
     private Hero(int id, int hp, int defence, int attackPower, String userName, SimplePlayer player) {

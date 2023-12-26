@@ -31,6 +31,10 @@ public class PlayerFacade {
         this.heroFacade = heroFacade;
         this.playerMapper = playerMapper;
     }
+    public PlayerSnapshot getPlayerSnapshotByEmail(String email){
+        return playerQueryRepository.findPlayerSnapshotByEmail(email)
+                .orElseThrow();
+    }
 
     public AuthenticationResponse create(PlayerCreateDto playerCreateDto) {
         Player player = playerFactory.from(playerCreateDto);
@@ -46,8 +50,7 @@ public class PlayerFacade {
                         playerLoginDto.getPassword()
                 )
         );
-        PlayerSnapshot player = playerQueryRepository.findPlayerSnapshotByEmail(playerLoginDto.getEmail())
-                .orElseThrow();
+        PlayerSnapshot player = getPlayerSnapshotByEmail(playerLoginDto.getEmail());
         var jwtToken = jwtService.generateToken(player);
         return new AuthenticationResponse(jwtToken, player.getUserName(), player.getEmail(), Integer.toString(JwtService.expiration));
     }

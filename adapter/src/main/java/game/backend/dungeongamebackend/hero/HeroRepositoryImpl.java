@@ -3,11 +3,14 @@ package game.backend.dungeongamebackend.hero;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 interface SqlHeroRepository extends JpaRepository<HeroSnapshot, Integer>{
-    Hero save(Hero hero);
+    HeroSnapshot save(HeroSnapshot heroSnapshot);
+    Optional<HeroSnapshot> findHeroSnapshotByUserName(String userName);
 }
 @Repository
-public class HeroRepositoryImpl implements HeroRepository{
+class HeroRepositoryImpl implements HeroRepository, HeroQueryRepository{
     private final SqlHeroRepository sqlHeroRepository;
 
     HeroRepositoryImpl(SqlHeroRepository sqlHeroRepository) {
@@ -15,6 +18,11 @@ public class HeroRepositoryImpl implements HeroRepository{
     }
     @Override
     public Hero save(Hero hero) {
-        return sqlHeroRepository.save(hero);
+        return Hero.restore(sqlHeroRepository.save(hero.getSnapshot()));
+    }
+
+    @Override
+    public Optional<HeroSnapshot> getHeroSnapshotByUserName(String userName) {
+        return sqlHeroRepository.findHeroSnapshotByUserName(userName);
     }
 }
