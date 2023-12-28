@@ -12,12 +12,12 @@ class Hero {
                 heroSnapshot.getUserName(),
                 SimplePlayer.restore(heroSnapshot.getPlayer()));
     }
-    private int id;
-    private int hp;
-    private int defence;
-    private int attackPower;
-    private String userName;
-    private SimplePlayer player;
+    private final int id;
+    private final int hp;
+    private final int defence;
+    private final int attackPower;
+    private final String userName;
+    private final SimplePlayer player;
 
     private Hero(int id, int hp, int defence, int attackPower, String userName, SimplePlayer player) {
         this.id = id;

@@ -1,10 +1,10 @@
 package game.backend.dungeongamebackend.hero.dto;
 
 public class HeroDto {
-    private int hp;
-    private int defence;
-    private int attackPower;
-    private String userName;
+    private final int hp;
+    private final int defence;
+    private final int attackPower;
+    private final String userName;
 
     public HeroDto(int hp, int defence, int attackPower, String userName) {
         this.hp = hp;

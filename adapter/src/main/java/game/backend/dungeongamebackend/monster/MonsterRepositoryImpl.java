@@ -17,10 +17,6 @@ class MonsterRepositoryImpl implements MonsterQueryRepository, MonsterRepository
         this.sqlMonsterRepository = sqlMonsterRepository;
     }
 
-    @Override
-    public Optional<Monster> findMonsterSnapshotByName(String email) {
-        return Optional.empty();
-    }
 
     @Override
     public Optional<Monster> findMonsterSnapshotById(int id) {
