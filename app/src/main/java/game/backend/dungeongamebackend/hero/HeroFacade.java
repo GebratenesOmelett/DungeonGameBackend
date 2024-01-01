@@ -29,4 +29,10 @@ public class HeroFacade {
     public void create(SimplePlayer simplePlayer) {
         heroRepository.save(heroFactory.from(simplePlayer.getSnapshot()));
     }
+    public HeroSnapshot update(HeroSnapshot heroSnapshot){
+        return heroRepository.save(Hero.restore(heroSnapshot)).getSnapshot();
+    }
+    public HeroDto addExperience(String userName){
+
+    }
 }

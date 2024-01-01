@@ -8,12 +8,16 @@ class HeroFactory {
     private final int HEALTH = 100;
     private final int ATTACK_POWER = 10;
     private final int DEFENCE = 10;
-    Hero from(SimplePlayerSnapshot simplePlayerSnapshot){
+
+    Hero from(SimplePlayerSnapshot simplePlayerSnapshot) {
         return Hero.restore(HeroSnapshot.builder()
                 .hp(HEALTH)
                 .attackPower(ATTACK_POWER)
                 .defence(DEFENCE)
                 .userName(simplePlayerSnapshot.getUserName())
-                .player(simplePlayerSnapshot).build());
+                .player(simplePlayerSnapshot)
+                .level(1)
+                .experience(0)
+                .build());
     }
 }

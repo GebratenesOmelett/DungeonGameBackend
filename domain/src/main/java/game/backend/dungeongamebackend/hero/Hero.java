@@ -10,7 +10,9 @@ class Hero {
                 heroSnapshot.getDefence(),
                 heroSnapshot.getAttackPower(),
                 heroSnapshot.getUserName(),
-                SimplePlayer.restore(heroSnapshot.getPlayer()));
+                SimplePlayer.restore(heroSnapshot.getPlayer()),
+                heroSnapshot.getLevel(),
+                heroSnapshot.getExperience());
     }
     private final int id;
     private final int hp;
@@ -18,14 +20,19 @@ class Hero {
     private final int attackPower;
     private final String userName;
     private final SimplePlayer player;
+    private final int level;
+    private final int experience;
 
-    private Hero(int id, int hp, int defence, int attackPower, String userName, SimplePlayer player) {
+    private Hero(int id, int hp, int defence, int attackPower,
+                 String userName, SimplePlayer player, int level, int experience) {
         this.id = id;
         this.hp = hp;
         this.defence = defence;
         this.attackPower = attackPower;
         this.userName = userName;
         this.player = player;
+        this.level = level;
+        this.experience = experience;
     }
 
     HeroSnapshot getSnapshot(){
@@ -36,6 +43,8 @@ class Hero {
                 .attackPower(attackPower)
                 .userName(userName)
                 .player(player.getSnapshot())
+                .level(level)
+                .experience(experience)
                 .build();
 
 

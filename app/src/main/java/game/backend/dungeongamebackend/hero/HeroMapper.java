@@ -9,6 +9,8 @@ class HeroMapper {
         return new HeroDto(heroSnapshot.getHp(),
                 heroSnapshot.getDefence(),
                 heroSnapshot.getAttackPower(),
-                heroSnapshot.getUserName());
+                heroSnapshot.getUserName(),
+                heroSnapshot.getLevel(),
+                heroSnapshot.getExperience());
     }
 }
