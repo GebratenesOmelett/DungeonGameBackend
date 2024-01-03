@@ -25,4 +25,5 @@ class HeroRepositoryImpl implements HeroRepository, HeroQueryRepository{
     public Optional<HeroSnapshot> getHeroSnapshotByUserName(String userName) {
         return sqlHeroRepository.findHeroSnapshotByUserName(userName);
     }
+
 }
